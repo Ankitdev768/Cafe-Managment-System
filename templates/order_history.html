@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    
+    <style>
+     /* General Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f6f8fc, #e4f1fc);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    transition: background-color 0.3s ease;
+}
+
+/* Main Container Styling */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: slideIn 1s ease-out;
+    box-sizing: border-box;
+    transition: transform 0.4s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.02);
+}
+
+/* Header Styling */
+h1, h2 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    animation: fadeIn 1.2s ease-in-out;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1:hover, h2:hover {
+    color: #FF8C00;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Menu Section */
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: linear-gradient(135deg, #f9f9f9, #e2e2e2);
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.menu-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #e4f1fc, #f6f8fc);
+}
+
+.menu-item span {
+    font-size: 1.2rem;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.menu-item:hover span {
+    color: #FF8C00;
+}
+
+/* Order Input Styling */
+.order-input {
+    width: 70px;
+    padding: 8px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.order-input:hover {
+    border-color: #FF8C00;
+    box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+}
+
+/* Payment Method Section */
+.payment-method {
+    text-align: center;
+    margin: 30px 0;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.payment-method h3 {
+    font-size: 1.6rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.payment-method button {
+    width: 80%;
+    max-width: 300px;
+    padding: 12px;
+    font-size: 1.2rem;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.payment-method button:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.payment-method button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Hover Animations */
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .menu-items {
+        gap: 15px;
+    }
+
+    .menu-item {
+        padding: 15px;
+    }
+
+    .order-input {
+        width: 60px;
+    }
+
+    .payment-method button {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .menu-items {
+        gap: 10px;
+    }
+
+    .menu-item {
+        padding: 12px;
+    }
+
+    .order-input {
+        width: 50px;
+    }
+
+    .payment-method button {
+        width: 100%;
+        padding: 10px;
+    }
+
+    h1, h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    h1, h2 {
+        font-size: 1.8rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .menu-items {
+        gap: 8px;
+    }
+
+    .menu-item {
+        padding: 10px;
+    }
+
+    .order-input {
+        width: 45px;
+    }
+
+    .payment-method button {
+        padding: 10px;
+        font-size: 1rem;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Order Summary</h1>
+        {% if order_record %}
+        <h2>Recent Order</h2>
+
+        <!-- Display Payment Method First -->
+        <p><strong>Payment Method:</strong> {{ order_record['payment_method'] }}</p>
+
+        <!-- Display Items Ordered -->
+        <h3>Items Ordered:</h3>
+        <ul>
+            {% for item, quantity in order_record['order'].items() %}
+                <li>{{ item }}: {{ quantity }} x Rs{{ menu[item] }} = Rs{{ menu[item] * quantity }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Display Discount and GST -->
+        <p><strong>Discount:</strong> Rs{{ order_record['discount'] }}</p>
+        <p><strong>GST:</strong> Rs{{ order_record['gst'] }}</p>
+
+        <!-- Display Total Amount -->
+        <p><strong>Total Amount:</strong> Rs{{ order_record['total'] }}</p>
+        {% endif %}
+
+        <h2>Order History</h2>
+        {% if history %}
+        <ul>
+            {% for order in history %}
+            <li>
+                <strong>{{ order['time'] }}</strong><br>
+
+                <!-- Display Payment Method First -->
+                <p><strong>Payment Method:</strong> {{ order['payment_method'] }}</p>
+
+                <!-- Display Items Ordered -->
+                {% for item, quantity in order['order'].items() %}
+                <p>{{ item }}: {{ quantity }} x Rs{{ menu[item] }} = Rs{{ menu[item] * quantity }}</p>
+                {% endfor %}
+
+                <!-- Display Discount and GST -->
+                <p><strong>Discount:</strong> Rs{{ order['discount'] }}</p>
+                <p><strong>GST:</strong> Rs{{ order['gst'] }}</p>
+
+                <!-- Display Total Amount -->
+                <p><strong>Total Paid:</strong> Rs{{ order['total'] }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No previous orders found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
