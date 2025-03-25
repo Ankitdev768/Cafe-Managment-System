@@ -8,8 +8,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    height: 100vh;
-    overflow: hidden;
     transition: background-color 0.3s ease;
 }
 
@@ -20,10 +18,15 @@ body {
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    animation: slideIn 0.8s ease-out;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: slideIn 1s ease-out;
     box-sizing: border-box;
+    transition: transform 0.4s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.02);
 }
 
 /* Header Styling */
@@ -32,9 +35,15 @@ h1, h2 {
     color: #333;
     font-size: 2.5rem;
     margin-bottom: 20px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 1px;
-    animation: fadeIn 1s ease-in-out;
+    animation: fadeIn 1.2s ease-in-out;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1:hover, h2:hover {
+    color: #FF8C00;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Menu Section */
@@ -42,7 +51,7 @@ h1, h2 {
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
-    gap: 15px;
+    gap: 20px;
 }
 
 .menu-item {
@@ -50,23 +59,29 @@ h1, h2 {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(135deg, #f9f9f9, #e2e2e2);
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     width: 100%;
     box-sizing: border-box;
 }
 
 .menu-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #e4f1fc, #f6f8fc);
 }
 
 .menu-item span {
     font-size: 1.2rem;
     color: #555;
     font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.menu-item:hover span {
+    color: #FF8C00;
 }
 
 /* Order Input Styling */
@@ -77,12 +92,18 @@ h1, h2 {
     text-align: center;
     border-radius: 5px;
     border: 1px solid #ddd;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .order-input:focus {
     outline: none;
     border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.order-input:hover {
+    border-color: #FF8C00;
+    box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
 }
 
 /* Payment Method Section */
@@ -109,17 +130,19 @@ h1, h2 {
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .payment-method button:hover {
     background-color: #45a049;
     transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .payment-method button:active {
     transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Button Hover Animations */
@@ -133,17 +156,19 @@ button {
     font-size: 1.2rem;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
     background-color: #45a049;
     transform: translateY(-3px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 button:active {
     transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Animations */
